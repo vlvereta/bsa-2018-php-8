@@ -7,6 +7,7 @@
     <div class="container">
         <h2>Editing currency in the market</h2>
         <form action="{{ route('currency', ['currency' => $currency]) }}" method="POST">
+            {{ method_field('PUT') }}
             {{ csrf_field() }}
 
             <div class="form-group">

@@ -30,13 +30,4 @@ class ValidatedCurrencyRequest extends FormRequest
             'price'         => 'required|min:0|numeric'
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'logo_url.url'          => 'The logo url format is invalid.',
-            'price.min'             => 'The price must be at least 0.',
-            'price.numeric'         => 'The price must be a number.'
-        ];
-    }
 }

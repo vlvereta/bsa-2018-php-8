@@ -25,7 +25,7 @@ Route::prefix('currencies')->group(function () {
 
     Route::get('/{id}/edit', 'CurrencyController@edit')->name('edit-currency');
 
-    Route::post('/{id}', 'CurrencyController@update')->name('update-currency');
+    Route::put('/{id}', 'CurrencyController@update')->name('update-currency');
 
     Route::delete('/', 'CurrencyController@delete')->name('delete-currency');
 

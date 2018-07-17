@@ -16,8 +16,9 @@ class CurrencyController extends Controller
     public function showById(int $id)
     {
         $currency = Currency::find($id);
-        if (!$currency)
+        if (!$currency) {
             abort(404);
+        }
         return view('currency', ['currency' => $currency]);
     }
 
@@ -34,12 +35,19 @@ class CurrencyController extends Controller
 
     public function edit(int $id)
     {
-        return view('forms/edit-form', ['currency' => Currency::find($id)]);
+        $currency = Currency::find($id);
+        if (!$currency) {
+            abort(404);
+        }
+        return view('forms/edit-form', ['currency' => $currency]);
     }
 
     public function update(ValidatedCurrencyRequest $request)
     {
         $currency = Currency::find($request->id);
+        if (!$currency) {
+            abort(404);
+        }
         $currency->fill($request->only(['title', 'short_name', 'logo_url', 'price']));
         $currency->save();
         return view('currency', ['currency' => $currency]);
